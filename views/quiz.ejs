@@ -1,10 +1,10 @@
-<h3>Quiz</h3>
+<h3 class="header">Quiz</h3>
+<div id="countdown"></div>
 
-<div>
+<div class='container'>
   <div>
-    <p><%= questions.story %></p>
+    <p class='story'><%= questions.story %></p>
   </div>
-  <div id="countdown"></div>
   <div>
 
       <form id="myForm" action="/quiz/results" method="POST">
@@ -21,7 +21,9 @@
       <% }) %>
     </ol>
     <input style="display: none;" name="id" value="<%= questions._id %>" />
-    <button type="submit">Submit</button>
+    <br>
+    <button class="button" type="submit">Submit</button>
+    <br>
 </form>
   </div>
 </div>

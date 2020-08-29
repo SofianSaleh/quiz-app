@@ -20,4 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', Main);
 app.use('/quiz', Quiz);
 
+app.use('*', (req, res) => {
+  res.render('layout', (data = { page: 'error' }));
+});
+
 app.listen(PORT, console.log(`listening on port : ${PORT}`));

@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1000, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
     <title>Quiz app</title>
   </head>
   <body>
-    <% if(data.page === "quiz"){ %> <%- include('quiz'); %> <% }else
-    if(page==='result'){ %> <%- include('result'); %> <% }else
-    if(page==='home'){ %> <%- include('index'); %> <% }else{ %> <%-
-    include('error'); %> <% } %>
+    <div class="container">
+      <% if(data.page === "quiz"){ %> <%- include('quiz'); %> <% }else
+      if(page==='result'){ %> <%- include('result'); %> <% }else
+      if(page==='home'){ %> <%- include('index'); %> <% }else{ %> <%-
+      include('error'); %> <% } %>
+    </div>
   </body>
 </html>

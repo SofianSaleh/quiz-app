@@ -13,9 +13,7 @@ function updateCounter() {
   seconds = seconds < 10 ? '0' + seconds : seconds;
   countdownEl.innerHTML = `${minutes}:${seconds}`;
   time--;
-  console.log(time);
-  if (time <= 590) {
-    console.log('hi');
+  if (time <= 0) {
     questionsEl.style.display = 'none';
     document.querySelector('#myForm').submit();
     myStopFunction();
