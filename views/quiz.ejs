@@ -1,0 +1,25 @@
+<h3>Quiz</h3>
+
+<div>
+  <div>
+    <p><%= story %></p>
+  </div>
+  <div>
+      <form action="/results" method="POST">
+    <ol>
+      <% questions.forEach((question,i) => { %>
+      <li>
+        <p><%= question.title %></p>
+        <ol type="a">
+          <% question.choices.forEach((choice) => { %>
+          <li><input type="radio" name="Question <%= i+1 %>" value="<%= choice %>"><%= choice %></input></li>
+          <% }) %>
+        </ol>
+      </li>
+      <% }) %>
+    </ol>
+    <button type="submit">Submit</button>
+</form>
+  </div>
+</div>
+

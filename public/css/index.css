@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    display: grid;
+}
+
+.welcome {
+    font-weight: bold;
+    color: blue;
+}
+
+.main {
+    align-self: center;
+}
+
+.instructions-para {}
+
+.start-btn {}
+
+*/

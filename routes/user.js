@@ -30,6 +30,7 @@ router.post('/loginaction', async (req, res) => {
   await newUser.save();
   sess = req.session;
   sess.userDetails = req.body;
+  res.render('quiz')
 });
 
 module.exports = router;

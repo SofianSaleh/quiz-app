@@ -12,4 +12,12 @@ router.use(
   })
 );
 
+router.get('/', (req,res) => {
+  try {
+    
+  } catch (e) {
+    res.send({success: false, msg: e.message})
+  }
+})
+
 module.exports = router;
