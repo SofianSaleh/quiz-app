@@ -3,8 +3,10 @@ const router = express.Router();
 require('dotenv').config();
 
 const Story = require('../database/story');
+const { update } = require('../database/story');
 
 router.get('/', async (req, res) => {
+  console.log(req.body);
   let story = await Story.find();
   let theChosenOne = story[Math.floor(Math.random() * story.length)];
   res.render(
@@ -18,12 +20,31 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    let newStory = await story.create(req.body);
+    let newStory = await Story.create(req.body);
     res.send({ success: true, msg: newStory });
   } catch (e) {
     console.log(e);
   }
 });
+
+router.put('/', async (req, res) => {
+  try {
+    let updated = await Story.update({ _id: req.body.id }, req.body);
+    res.send({ success: true, msg: updated });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+router.delete('/', async (req, res) => {
+  try {
+    let updated = await Story.deleteOne({ _id: req.body.id });
+    res.send({ success: true, msg: 'Deleted successfully' });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 router.post('/results', async (req, res) => {
   try {
     let story = await Story.findById(req.body.id);
