@@ -7,7 +7,8 @@
   </head>
   <body>
     <% if(data.page === "quiz"){ %> <%- include('quiz'); %> <% }else
-    if(page==='result'){ %> <%- include('index'); %> <% }else if(page==='home'){
-    %> <%- include('index'); %> <% }else{ %> <%- include('test'); %> <% } %>
+    if(page==='result'){ %> <%- include('result'); %> <% }else
+    if(page==='home'){ %> <%- include('index'); %> <% }else{ %> <%-
+    include('error'); %> <% } %>
   </body>
 </html>

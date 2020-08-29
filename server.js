@@ -1,6 +1,9 @@
 const express = require('express');
-// const DB = require('./database/index');
+const DB = require('./database/index');
 const bodyParser = require('body-parser');
+
+const Main = require('./routes/index');
+const Quiz = require('./routes/quiz');
 
 let path = require('path');
 
@@ -14,37 +17,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.render(
-    'layout',
-    (data = {
-      page: 'home',
-    })
-  );
-});
-app.get('/quiz', (req, res) => {
-  let x = [
-    { title: 'one', choices: ['asdfgsdf', 'bbbbb', 'cdbd', 'ddbdb'] },
-    { title: 'two', choices: ['aa', 'bb', 'cc', 'dd'] },
-    { title: 'three', choices: ['aaa', 'bbb', 'ccc', 'ddd'] },
-  ];
-  res.render(
-    'layout',
-    (data = {
-      page: 'quiz',
-      story: `hello there`,
-      questions: x,
-    })
-  );
-});
-
-app.post('/results', (req, res) => {
-  console.log(req.body);
-  res.render('layout', (data = { page: 'result' }));
-});
-app.get('/results', (req, res) => {
-  console.log(req.body);
-  res.render('layout', (data = { page: '' }));
-});
+app.use('/', Main);
+app.use('/quiz', Quiz);
 
 app.listen(PORT, console.log(`listening on port : ${PORT}`));

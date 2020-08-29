@@ -2,24 +2,27 @@
 
 <div>
   <div>
-    <p><%= story %></p>
+    <p><%= questions.story %></p>
   </div>
+  <div id="countdown"></div>
   <div>
-      <form action="/results" method="POST">
-    <ol>
-      <% questions.forEach((question,i) => { %>
+
+      <form id="myForm" action="/quiz/results" method="POST">
+    <ol id="questions">
+      <% questions.questions.forEach((q,i) => { %>
       <li>
-        <p><%= question.title %></p>
+        <p><%= q.question %></p>
         <ol type="a">
-          <% question.choices.forEach((choice) => { %>
-          <li><input type="radio" name="Question <%= i+1 %>" value="<%= choice %>"><%= choice %></input></li>
+          <% q.answer.forEach((choice) => { %>
+          <li><input type="radio" name=<%= i %> value="<%= choice %>"><%= choice %></input></li>
           <% }) %>
         </ol>
       </li>
       <% }) %>
     </ol>
+    <input style="display: none;" name="id" value="<%= questions._id %>" />
     <button type="submit">Submit</button>
 </form>
   </div>
 </div>
-
+<script src="/js/main.js"></script>

@@ -9,8 +9,8 @@ const storySchema = new Schema({
   questions: {
     type: [
       {
-        questions: String,
-        answer: String,
+        question: String,
+        answer: { type: [String] },
         realAnswer: String,
       },
     ],

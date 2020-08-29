@@ -1,23 +1,21 @@
 let express = require('express');
 let router = express.Router();
+require('dotenv').config();
 
-let session = require('express-session');
-//Creates a session
-router.use(
-  session({
-    resave: true,
-    saveUninitialized: true,
-    secret: 'SECRETSESSION',
-    cookie: { maxAge: 60000 },
-  })
-);
-
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
   try {
-    
+    res.render(
+      'layout',
+      (data = {
+        page: 'home',
+      })
+    );
   } catch (e) {
-    res.send({success: false, msg: e.message})
+    res.render(
+      'error',
+      (data = { page: err, msg: 'cannot find the page you are looking for' })
+    );
   }
-})
+});
 
 module.exports = router;
